@@ -16,12 +16,12 @@ const rootRef = admin.database().ref();
 
 app.get("/", (req, res) => {
   res.send(
-    // `<form action="./payload"><input type = "submit" value = "Click me for current data!" /></form ><form action="./sample"><input type = "submit" value = "Click me for sample data." /></form >`
-    `<button onclick="location.href='/payload'" type="button">Click me for current data from the website!</button><button onclick="location.href='/sample'" type="button">Click me for stored sample data.</button>`
+    // `<form action="./api/stream"><input type = "submit" value = "Click me for current data!" /></form ><form action="./sample"><input type = "submit" value = "Click me for sample data." /></form >`
+    `<button onclick="location.href='/api/stream'" type="button">Click me for current data from the website!</button><button onclick="location.href='/api/stream-sample'" type="button">Click me for stored sample data.</button>`
   );
 });
 
-app.get("/payload", async (req, res) => {
+app.get("/api/stream", async (req, res) => {
   const payload = {
     "Beat Saber D1": {},
     "Beat Saber D2": {},
@@ -53,8 +53,8 @@ app.get("/payload", async (req, res) => {
   res.json(payload);
 });
 
-app.get("/sample", (req, res) => {
-  res.download("payload.json");
+app.get("/api/stream-sample", (req, res) => {
+  res.download("payload.json", "streamData.json");
 });
 
 app.listen(port, () => {
