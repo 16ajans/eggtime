@@ -57,6 +57,10 @@ app.get("/api/stream-sample", (req, res) => {
   res.download("payload.json", "streamData.json");
 });
 
+app.get('/favicon.ico', (req, res) => {
+    res.download('favicon.ico')
+})
+
 app.listen(port, () => {
   console.log(`Service listening on http://localhost:${port}.`);
 });
